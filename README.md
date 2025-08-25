@@ -5,6 +5,6 @@ Nama Kelompok: Developer Ikan Logger
 
 Ketua Kelompok: Zaki Fadhila Rahman
 
-Anggota 1 : Faiz Arsyi Pragata
+Anggota 1 : 
 
-Anggota 2 : Raditya Ryan Narotama
+Anggota 2 : Faiz Arsyi Pragata-23/518958/TK/57199
