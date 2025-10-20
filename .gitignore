@@ -1,0 +1,16 @@
+# Visual Studio folder
+.vs/
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Backup & log files
+*.log
+*.tmp
