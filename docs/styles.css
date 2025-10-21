@@ -1,0 +1,111 @@
+
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #e6f2f7; 
+      color: #023649; 
+    }
+
+    header {
+      background: linear-gradient(to bottom, #0077b6, #0096c7); /* deep to light blue */
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0.2rem 0;
+      font-size: 2rem;
+    }
+    header p {
+      margin: 0.5rem 0 1rem;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #ffdd99; /* sandy yellow */
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    section {
+      margin: 2rem 0;
+    }
+    h2 {
+      border-bottom: 2px solid #00b4d8; /* aqua line */
+      padding-bottom: 0.3rem;
+      color: #0077b6;
+    }
+    ul, ol {
+      padding-left: 1.2rem;
+    }
+
+    pre {
+      background: #dff6fa; /* pale aqua */
+      padding: 0.8rem;
+      overflow-x: auto;
+      border-left: 4px solid #00b4d8;
+      border-radius: 4px;
+    }
+    code {
+      font-family: monospace;
+    }
+
+    footer {
+      background: #0077b6;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      position: relative;
+    }
+
+    /* Decorative “wave” footer */
+    footer::before {
+      content: "";
+      display: block;
+      height: 20px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23e6f2f7" fill-opacity="1" d="M0,64L48,85.3C96,107,192,149,288,165.3C384,181,480,171,576,176C672,181,768,203,864,197.3C960,192,1056,160,1152,154.7C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    td {
+      border: 1px solid #00b4d8;         
+      padding: 0.5rem;
+      text-align: left;
+    }
+    th {
+      border : 1px solid #00b4d8;
+      padding: 0.5rem;
+      text-align: center
+    }
