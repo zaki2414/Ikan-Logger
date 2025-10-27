@@ -9,14 +9,28 @@ namespace IkanLogger.Models
 {
     public class User
     {
-        public int idUser { get; set; }
-        public string? userName { get; set; }
-        public string? userPassword { get; set; }
+        public int idUser = 0;
+        public string userName = string.Empty;
+        public string userPassword = string.Empty;
+
+        public User() { }
+        public User(string username, string password) 
+        {
+            userName = username;
+            userPassword = password;
+        }
 
         public Boolean Login(string userName, string userPassword)
         {
-            // User login
-            return true;
+            if (userName == "admin" && userPassword == "admin")
+            {
+                idUser = 1;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Logout()
