@@ -45,7 +45,7 @@ partial class Login
         btnLogin.Margin = new Padding(3, 4, 3, 4);
         btnLogin.Name = "btnLogin";
         btnLogin.Size = new Size(238, 31);
-        btnLogin.TabIndex = 0;
+        btnLogin.TabIndex = 3;
         btnLogin.Text = "Login";
         btnLogin.UseVisualStyleBackColor = true;
         btnLogin.Click += btnLogin_Click;
@@ -82,7 +82,7 @@ partial class Login
         tbPassword.Margin = new Padding(3, 4, 3, 4);
         tbPassword.Name = "tbPassword";
         tbPassword.Size = new Size(238, 27);
-        tbPassword.TabIndex = 3;
+        tbPassword.TabIndex = 2;
         tbPassword.UseSystemPasswordChar = true;
         // 
         // title
@@ -102,7 +102,7 @@ partial class Login
         linkSignUp.Location = new Point(504, 347);
         linkSignUp.Name = "linkSignUp";
         linkSignUp.Size = new Size(61, 20);
-        linkSignUp.TabIndex = 6;
+        linkSignUp.TabIndex = 4;
         linkSignUp.TabStop = true;
         linkSignUp.Text = "Sign Up";
         linkSignUp.LinkClicked += linkSignUp_LinkClicked;

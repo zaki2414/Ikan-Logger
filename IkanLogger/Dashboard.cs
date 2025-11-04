@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IkanLogger.Models;
 
 namespace IkanLogger
 {
     public partial class Dashboard : Form
     {
-        public Dashboard()
+        private User currentUser;
+        public Dashboard(User user)
         {
             InitializeComponent();
+            currentUser = user;
         }
 
         private void profileBtn_Click(object sender, EventArgs e)
         {
-            Profile profile = new Profile();
+            Profile profile = new Profile(currentUser);
             profile.Show();
             this.Hide();
         }

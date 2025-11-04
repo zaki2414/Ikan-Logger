@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             title = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            tbEmail = new TextBox();
+            tbPassword = new TextBox();
             btnSignUp = new Button();
-            lblUserName = new Label();
+            lblEmail = new Label();
             lblPassword = new Label();
             label1 = new Label();
             linkLogin = new LinkLabel();
+            lblUsername = new Label();
+            tbUsername = new TextBox();
             SuspendLayout();
             // 
             // title
@@ -49,46 +51,47 @@
             title.TabIndex = 0;
             title.Text = "Sign Up";
             // 
-            // textBox1
+            // tbEmail
             // 
-            textBox1.Location = new Point(323, 184);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(238, 27);
-            textBox1.TabIndex = 1;
+            tbEmail.Location = new Point(323, 184);
+            tbEmail.Margin = new Padding(3, 4, 3, 4);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(238, 27);
+            tbEmail.TabIndex = 1;
             // 
-            // textBox2
+            // tbPassword
             // 
-            textBox2.Location = new Point(323, 252);
-            textBox2.Margin = new Padding(3, 4, 3, 4);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(238, 27);
-            textBox2.TabIndex = 2;
-            textBox2.UseSystemPasswordChar = true;
+            tbPassword.Location = new Point(323, 304);
+            tbPassword.Margin = new Padding(3, 4, 3, 4);
+            tbPassword.Name = "tbPassword";
+            tbPassword.Size = new Size(238, 27);
+            tbPassword.TabIndex = 3;
+            tbPassword.UseSystemPasswordChar = true;
             // 
             // btnSignUp
             // 
-            btnSignUp.Location = new Point(323, 303);
+            btnSignUp.Location = new Point(323, 355);
             btnSignUp.Margin = new Padding(3, 4, 3, 4);
             btnSignUp.Name = "btnSignUp";
             btnSignUp.Size = new Size(238, 29);
-            btnSignUp.TabIndex = 3;
+            btnSignUp.TabIndex = 4;
             btnSignUp.Text = "Sign Up";
             btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.Click += btnSignUp_Click;
             // 
-            // lblUserName
+            // lblEmail
             // 
-            lblUserName.AutoSize = true;
-            lblUserName.Location = new Point(323, 160);
-            lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(75, 20);
-            lblUserName.TabIndex = 4;
-            lblUserName.Text = "Username";
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(323, 160);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(46, 20);
+            lblEmail.TabIndex = 4;
+            lblEmail.Text = "Email";
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(323, 228);
+            lblPassword.Location = new Point(323, 280);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(70, 20);
             lblPassword.TabIndex = 5;
@@ -97,7 +100,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(323, 347);
+            label1.Location = new Point(323, 399);
             label1.Name = "label1";
             label1.Size = new Size(178, 20);
             label1.TabIndex = 6;
@@ -106,26 +109,45 @@
             // linkLogin
             // 
             linkLogin.AutoSize = true;
-            linkLogin.Location = new Point(515, 347);
+            linkLogin.Location = new Point(515, 399);
             linkLogin.Name = "linkLogin";
             linkLogin.Size = new Size(46, 20);
-            linkLogin.TabIndex = 7;
+            linkLogin.TabIndex = 5;
             linkLogin.TabStop = true;
             linkLogin.Text = "Login";
-            linkLogin.LinkClicked += this.linkLogin_LinkClicked;
+            linkLogin.LinkClicked += linkLogin_LinkClicked;
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Location = new Point(323, 217);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(75, 20);
+            lblUsername.TabIndex = 9;
+            lblUsername.Text = "Username";
+            // 
+            // tbUsername
+            // 
+            tbUsername.Location = new Point(323, 241);
+            tbUsername.Margin = new Padding(3, 4, 3, 4);
+            tbUsername.Name = "tbUsername";
+            tbUsername.Size = new Size(238, 27);
+            tbUsername.TabIndex = 2;
             // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(874, 556);
+            Controls.Add(lblUsername);
+            Controls.Add(tbUsername);
             Controls.Add(linkLogin);
             Controls.Add(label1);
             Controls.Add(lblPassword);
-            Controls.Add(lblUserName);
+            Controls.Add(lblEmail);
             Controls.Add(btnSignUp);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(tbPassword);
+            Controls.Add(tbEmail);
             Controls.Add(title);
             Name = "SignUp";
             Text = "Form1";
@@ -136,12 +158,14 @@
         #endregion
 
         private Label title;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox tbEmail;
+        private TextBox tbPassword;
         private Button btnSignUp;
-        private Label lblUserName;
+        private Label lblEmail;
         private Label lblPassword;
         private Label label1;
         private LinkLabel linkLogin;
+        private Label lblUsername;
+        private TextBox tbUsername;
     }
 }
