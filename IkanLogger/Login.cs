@@ -1,7 +1,8 @@
-using System;
-using System.Windows.Forms;
-using System.Drawing;
 using IkanLogger.Models;
+using Npgsql;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace IkanLogger
 {
@@ -14,18 +15,29 @@ namespace IkanLogger
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            User u = new User(tbUsername.Text, tbPassword.Text);
+            try
+            {
+                User u = new User(tbUsername.Text, tbPassword.Text);
 
-            if (u.Login(u.userName, u.userPassword))
-            {
-                MessageBox.Show("Login Berhasil", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Dashboard dashboard = new Dashboard();
-                dashboard.Show();
-                this.Hide();
+                if (u.Login(tbUsername.Text, tbPassword.Text))
+                {
+                    MessageBox.Show("Login berhasil", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    tbPassword.Clear();
+                    tbUsername.Clear();
+
+                    Dashboard d = new Dashboard(u);
+                    d.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Username atau password salah!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Login Gagal", "Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -112,7 +112,7 @@
             // 
             // logBtn
             // 
-            logBtn.BackColor = Color.Transparent;
+            logBtn.BackColor = Color.SkyBlue;
             logBtn.BackgroundImageLayout = ImageLayout.None;
             logBtn.FlatAppearance.BorderSize = 0;
             logBtn.FlatStyle = FlatStyle.Flat;
