@@ -1,4 +1,5 @@
 using IkanLogger.Models;
+using IkanLogger.Services;
 using Npgsql;
 using System;
 using System.Drawing;
@@ -13,26 +14,37 @@ namespace IkanLogger
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
-                User u = new User(tbUsername.Text, tbPassword.Text);
+                string username = tbUsername.Text;
+                string password = tbPassword.Text;
 
-                if (u.Login(tbUsername.Text, tbPassword.Text))
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 {
-                    MessageBox.Show("Login berhasil", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Username dan password tidak boleh kosong!");
+                    return;
+                }
 
-                    tbPassword.Clear();
-                    tbUsername.Clear();
+                int userId = await UserService.LoginAsync(username, password);
 
-                    Dashboard d = new Dashboard(u);
-                    d.Show();
+                if (userId > 0)
+                {
+                    MessageBox.Show("Login berhasil!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Buka dashboard
+                    Dashboard dashboard = new Dashboard(userId);
+                    dashboard.Show();
+
                     this.Hide();
                 }
                 else
                 {
-                    MessageBox.Show("Username atau password salah!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Username atau password salah!",
+                                    "Login Gagal",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
