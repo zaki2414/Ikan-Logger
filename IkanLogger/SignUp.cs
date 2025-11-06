@@ -1,14 +1,4 @@
-﻿using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using IkanLogger.Models;
+﻿ using IkanLogger.Services;
 
 namespace IkanLogger
 {
@@ -26,39 +16,35 @@ namespace IkanLogger
             this.Hide();
         }
 
-        private void btnSignUp_Click(object sender, EventArgs e)
+        private async void btnSignUp_Click(object sender, EventArgs e)
         {
             try
             {
                 if (string.IsNullOrWhiteSpace(tbUsername.Text) ||
-                    string.IsNullOrWhiteSpace(tbEmail.Text) ||
                     string.IsNullOrWhiteSpace(tbPassword.Text))
                 {
                     MessageBox.Show("Semua field harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                User u = new User(tbUsername.Text, tbPassword.Text);
+                bool success = await UserService.RegisterAsync(tbUsername.Text, tbPassword.Text);
 
-                if (u.Register(tbUsername.Text, tbEmail.Text, tbPassword.Text))
+                if (success)
                 {
-                    MessageBox.Show("Berhasil membuat akun", "Sukses!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    tbPassword.Clear();
-                    tbUsername.Clear();
-                    tbEmail.Clear();
+                    MessageBox.Show("Berhasil membuat akun!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    Login l = new Login();
-                    l.Show();
+                    Login login = new Login();
+                    login.Show();
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Registrasi gagal!", "Gagal!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Registrasi gagal!");
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                MessageBox.Show("Error: "+ex.Message, "FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

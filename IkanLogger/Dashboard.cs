@@ -14,17 +14,20 @@ namespace IkanLogger
     public partial class Dashboard : Form
     {
         private User currentUser;
-        public Dashboard(User user)
+        private int userId;
+        public Dashboard(int userId )
         {
             InitializeComponent();
-            currentUser = user;
+            this.userId = userId;
         }
 
         private void profileBtn_Click(object sender, EventArgs e)
         {
-            Profile profile = new Profile(currentUser);
+            Profile profile = new Profile(this.userId);
             profile.Show();
             this.Hide();
+
+            profile.FormClosed += (s, args) => this.Show();
         }
     }
 }

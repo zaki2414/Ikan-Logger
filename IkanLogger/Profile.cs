@@ -1,35 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using IkanLogger.Models;
+﻿using IkanLogger.Models;
+using IkanLogger.Services;
 
 namespace IkanLogger
 {
     public partial class Profile : Form
     {
+        private int userId;
         private User currentUser;
-        public Profile(User user)
+
+        public Profile(int userId)
         {
             InitializeComponent();
-            currentUser = user;
+            this.userId = userId;
+        }
 
-            currentUser.GetProfile(currentUser.Id);
 
-            tbNama.Text = currentUser.UserName;
-            tbEmail.Text = currentUser.Email;
+        private async void Profile_Load(object sender, EventArgs e)
+        {
+            await LoadProfileAsync();
+        }
+
+        private async Task LoadProfileAsync()
+        {
+            currentUser = await UserService.GetProfileAsync(userId);
+
+            if (currentUser != null)
+            {
+                tbNama.Text = currentUser.Username;
+            }
+            else
+            {
+                MessageBox.Show("Gagal memuat data profil.", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard(currentUser);
+            Dashboard dashboard = new Dashboard(userId);
             dashboard.Show();
-            this.Close();
+            this.Hide();
+
+            dashboard.FormClosed += (s, args) => this.Close();
         }
     }
 }
