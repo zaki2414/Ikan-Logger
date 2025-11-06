@@ -14,6 +14,37 @@ namespace IkanLogger
             InitializeComponent();
         }
 
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtLogin.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+            txtUserName.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+            txtPassword.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+            linkSignUp.LinkColor = ColorTranslator.FromHtml("#1F4F6E");
+            btnLogin.BackColor = ColorTranslator.FromHtml("#1F4F6E");
+            btnLogin.ForeColor = ColorTranslator.FromHtml("#EBFFFF");
+
+            //btnLogin.FlatStyle = FlatStyle.Flat;
+            //btnLogin.FlatAppearance.BorderSize = 0;
+            //btnLogin.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            //btnLogin.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            //btnLogin.UseVisualStyleBackColor = false;
+
+            // Hubungkan event handler
+            btnLogin.MouseEnter += BtnLogin_MouseEnter;
+            btnLogin.MouseLeave += BtnLogin_MouseLeave;
+        }
+        private void BtnLogin_MouseEnter(object sender, EventArgs e)
+        {
+            btnLogin.ForeColor = ColorTranslator.FromHtml("#8BD8F0");
+            btnLogin.Cursor = Cursors.Hand;
+        }
+
+        private void BtnLogin_MouseLeave(object sender, EventArgs e)
+        {
+            btnLogin.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+            btnLogin.Cursor = Cursors.Default;
+        }
+
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
