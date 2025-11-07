@@ -4,6 +4,7 @@ using Npgsql;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace IkanLogger
 {
@@ -14,38 +15,89 @@ namespace IkanLogger
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-            txtLogin.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
-            txtUserName.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
-            txtPassword.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
-            linkSignUp.LinkColor = ColorTranslator.FromHtml("#1F4F6E");
-            btnLogin.BackColor = ColorTranslator.FromHtml("#1F4F6E");
-            btnLogin.ForeColor = ColorTranslator.FromHtml("#EBFFFF");
+private void Login_Load(object sender, EventArgs e)
+    {
+        txtLogin.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+        txtUserName.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+        txtPassword.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+        linkSignUp.LinkColor = ColorTranslator.FromHtml("#1F4F6E");
+        linkSignUp.ActiveLinkColor = ColorTranslator.FromHtml("#8BD8F0");
 
-            //btnLogin.FlatStyle = FlatStyle.Flat;
-            //btnLogin.FlatAppearance.BorderSize = 0;
-            //btnLogin.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            //btnLogin.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            //btnLogin.UseVisualStyleBackColor = false;
+        tbUsername.BackColor = ColorTranslator.FromHtml("#D8F4FB");
+        tbPassword.BackColor = ColorTranslator.FromHtml("#D8F4FB");
 
-            // Hubungkan event handler
-            btnLogin.MouseEnter += BtnLogin_MouseEnter;
-            btnLogin.MouseLeave += BtnLogin_MouseLeave;
+        btnLogin.BackColor = ColorTranslator.FromHtml("#D8F4FB");
+        btnLogin.ForeColor = ColorTranslator.FromHtml("#EBFFFF");
+        btnLogin.FlatStyle = FlatStyle.Flat;
+        btnLogin.FlatAppearance.BorderSize = 0;
+
+        // Hubungkan event handler
+        btnLogin.MouseEnter += BtnLogin_MouseEnter;
+        btnLogin.MouseLeave += BtnLogin_MouseLeave;
+        btnLogin.Paint += BtnLogin_Paint;
+        tbUsername.TextChanged += TbUsername_TextChanged;
+        tbPassword.TextChanged += TbPassword_TextChanged;
         }
-        private void BtnLogin_MouseEnter(object sender, EventArgs e)
+        private void TbUsername_TextChanged(object sender, EventArgs e)
         {
+            tbUsername.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+        }
+
+        private void TbPassword_TextChanged(object sender, EventArgs e)
+        {
+            tbPassword.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+        }
+
+        private void BtnLogin_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = (Button)sender;
+            e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+
+            // Tentukan warna & radius
+            int radius = 20; // ubah sesuai selera
+            Color fillColor = ColorTranslator.FromHtml("#1F4F6E");
+
+            // Buat path dengan rounded corner
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                Rectangle rect = new Rectangle(0, 0, btn.Width, btn.Height);
+                int diameter = radius * 2;
+                path.AddArc(rect.X, rect.Y, diameter, diameter, 180, 90);
+                path.AddArc(rect.Right - diameter, rect.Y, diameter, diameter, 270, 90);
+                path.AddArc(rect.Right - diameter, rect.Bottom - diameter, diameter, diameter, 0, 90);
+                path.AddArc(rect.X, rect.Bottom - diameter, diameter, diameter, 90, 90);
+                path.CloseFigure();
+
+                // Isi warna latar belakang
+                using (SolidBrush brush = new SolidBrush(fillColor))
+                {
+                    e.Graphics.FillPath(brush, path);
+                }
+
+                // Gambar teks di tengah
+                TextRenderer.DrawText(
+                    e.Graphics,
+                    btn.Text,
+                    btn.Font,
+                    rect,
+                    btn.ForeColor,
+                    TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter
+                );
+            }
+        }
+
+        private void BtnLogin_MouseEnter(object sender, EventArgs e)
+    {
             btnLogin.ForeColor = ColorTranslator.FromHtml("#8BD8F0");
             btnLogin.Cursor = Cursors.Hand;
-        }
+    }
 
-        private void BtnLogin_MouseLeave(object sender, EventArgs e)
-        {
-            btnLogin.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+    private void BtnLogin_MouseLeave(object sender, EventArgs e)
+    {
+            btnLogin.ForeColor = ColorTranslator.FromHtml("#D8F4FB");
             btnLogin.Cursor = Cursors.Default;
-        }
-
-        private async void btnLogin_Click(object sender, EventArgs e)
+    }
+    private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
@@ -54,7 +106,8 @@ namespace IkanLogger
 
                 if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 {
-                    MessageBox.Show("Username dan password tidak boleh kosong!");
+                    CustomMessageBox msg = new CustomMessageBox("Username dan password tidak boleh kosong!", MessageBoxIcon.Information);
+                    msg.ShowDialog();
                     return;
                 }
 
@@ -62,7 +115,8 @@ namespace IkanLogger
 
                 if (userId > 0)
                 {
-                    MessageBox.Show("Login berhasil!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CustomMessageBox msg = new CustomMessageBox("Login berhasil!", MessageBoxIcon.Information);
+                    msg.ShowDialog();
 
                     // Buka dashboard
                     Dashboard dashboard = new Dashboard(userId);
@@ -72,15 +126,14 @@ namespace IkanLogger
                 }
                 else
                 {
-                    MessageBox.Show("Username atau password salah!",
-                                    "Login Gagal",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
+                    CustomMessageBox msg = new CustomMessageBox("Username atau password salah!", MessageBoxIcon.Information);
+                    msg.ShowDialog();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox msg = new CustomMessageBox("Error: " + ex.Message, MessageBoxIcon.Information);
+                msg.ShowDialog();
             }
         }
 

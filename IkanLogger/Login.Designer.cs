@@ -40,27 +40,35 @@ partial class Login
         // 
         // btnLogin
         // 
+        btnLogin.BackColor = Color.Transparent;
         btnLogin.FlatAppearance.BorderSize = 0;
         btnLogin.FlatAppearance.MouseDownBackColor = Color.Transparent;
         btnLogin.FlatAppearance.MouseOverBackColor = Color.Transparent;
         btnLogin.FlatStyle = FlatStyle.Flat;
         btnLogin.Font = new Font("Plus Jakarta Sans", 22.7999973F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnLogin.ForeColor = SystemColors.ControlText;
-        btnLogin.Location = new Point(903, 700);
+        btnLogin.Location = new Point(870, 700);
         btnLogin.Margin = new Padding(0);
         btnLogin.Name = "btnLogin";
-        btnLogin.Size = new Size(238, 31);
+        btnLogin.Size = new Size(160, 70);
         btnLogin.TabIndex = 3;
         btnLogin.Text = "Login";
         btnLogin.UseVisualStyleBackColor = false;
         btnLogin.Click += btnLogin_Click;
+        btnLogin.Paint += BtnLogin_Paint;
         // 
         // tbUsername
         // 
-        tbUsername.Location = new Point(323, 184);
-        tbUsername.Margin = new Padding(3, 4, 3, 4);
+        tbUsername.BackColor = Color.Turquoise;
+        tbUsername.BorderStyle = BorderStyle.None;
+        tbUsername.Cursor = Cursors.IBeam;
+        tbUsername.Font = new Font("Plus Jakarta Sans SemiBold", 16.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        tbUsername.Location = new Point(655, 430);
+        tbUsername.Margin = new Padding(0);
+        tbUsername.MaximumSize = new Size(700, 100);
+        tbUsername.MinimumSize = new Size(0, 50);
         tbUsername.Name = "tbUsername";
-        tbUsername.Size = new Size(238, 27);
+        tbUsername.Size = new Size(600, 50);
         tbUsername.TabIndex = 1;
         // 
         // txtUserName
@@ -88,10 +96,15 @@ partial class Login
         // 
         // tbPassword
         // 
-        tbPassword.Location = new Point(323, 252);
-        tbPassword.Margin = new Padding(3, 4, 3, 4);
+        tbPassword.BorderStyle = BorderStyle.None;
+        tbPassword.Cursor = Cursors.IBeam;
+        tbPassword.Font = new Font("Plus Jakarta Sans SemiBold", 16.8000011F, FontStyle.Bold);
+        tbPassword.Location = new Point(655, 588);
+        tbPassword.Margin = new Padding(0);
+        tbPassword.MaximumSize = new Size(700, 70);
+        tbPassword.MinimumSize = new Size(0, 50);
         tbPassword.Name = "tbPassword";
-        tbPassword.Size = new Size(238, 27);
+        tbPassword.Size = new Size(600, 50);
         tbPassword.TabIndex = 2;
         tbPassword.UseSystemPasswordChar = true;
         // 
@@ -111,10 +124,11 @@ partial class Login
         // 
         linkSignUp.AutoSize = true;
         linkSignUp.BackColor = Color.Transparent;
-        linkSignUp.Font = new Font("Plus Jakarta Sans", 16.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        linkSignUp.Location = new Point(504, 347);
+        linkSignUp.Font = new Font("Plus Jakarta Sans ExtraBold", 16.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        linkSignUp.Location = new Point(1049, 787);
+        linkSignUp.Margin = new Padding(0);
         linkSignUp.Name = "linkSignUp";
-        linkSignUp.Size = new Size(127, 48);
+        linkSignUp.Size = new Size(129, 48);
         linkSignUp.TabIndex = 4;
         linkSignUp.TabStop = true;
         linkSignUp.Text = "Sign Up";
@@ -125,7 +139,7 @@ partial class Login
         txtDont.AutoSize = true;
         txtDont.BackColor = Color.Transparent;
         txtDont.Font = new Font("Plus Jakarta Sans Medium", 16.8F, FontStyle.Bold);
-        txtDont.Location = new Point(755, 787);
+        txtDont.Location = new Point(725, 787);
         txtDont.Margin = new Padding(0);
         txtDont.Name = "txtDont";
         txtDont.Size = new Size(330, 46);
@@ -136,7 +150,7 @@ partial class Login
         // 
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
-        BackgroundImage = Properties.Resources.Artboard_153;
+        BackgroundImage = Properties.Resources.Artboard_155;
         BackgroundImageLayout = ImageLayout.Stretch;
         ClientSize = new Size(914, 600);
         Controls.Add(txtDont);
@@ -153,6 +167,7 @@ partial class Login
         Name = "Login";
         Text = "Form1";
         WindowState = FormWindowState.Maximized;
+        Load += Login_Load;
         ResumeLayout(false);
         PerformLayout();
     }

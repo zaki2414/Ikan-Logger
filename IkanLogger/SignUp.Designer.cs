@@ -28,108 +28,144 @@
         /// </summary>
         private void InitializeComponent()
         {
-            title = new Label();
+            txtSignUp = new Label();
             tbPassword = new TextBox();
             btnSignUp = new Button();
-            lblPassword = new Label();
-            label1 = new Label();
+            txtPassword = new Label();
+            txtAlready = new Label();
             linkLogin = new LinkLabel();
-            lblUsername = new Label();
+            txtUsername = new Label();
             tbUsername = new TextBox();
             SuspendLayout();
             // 
-            // title
+            // txtSignUp
             // 
-            title.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            title.AutoSize = true;
-            title.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            title.Location = new Point(365, 85);
-            title.Name = "title";
-            title.Size = new Size(159, 50);
-            title.TabIndex = 0;
-            title.Text = "Sign Up";
+            txtSignUp.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtSignUp.AutoSize = true;
+            txtSignUp.BackColor = Color.Transparent;
+            txtSignUp.FlatStyle = FlatStyle.Flat;
+            txtSignUp.Font = new Font("MAUIKEA Demo", 33.6F);
+            txtSignUp.Location = new Point(875, 257);
+            txtSignUp.Margin = new Padding(0);
+            txtSignUp.Name = "txtSignUp";
+            txtSignUp.Size = new Size(214, 56);
+            txtSignUp.TabIndex = 0;
+            txtSignUp.Text = "Sign Up";
             // 
             // tbPassword
             // 
-            tbPassword.Location = new Point(333, 254);
-            tbPassword.Margin = new Padding(3, 4, 3, 4);
+            tbPassword.BorderStyle = BorderStyle.None;
+            tbPassword.Font = new Font("Plus Jakarta Sans SemiBold", 16.8000011F, FontStyle.Bold);
+            tbPassword.Location = new Point(655, 588);
+            tbPassword.Margin = new Padding(0);
+            tbPassword.MaximumSize = new Size(700, 50);
+            tbPassword.MinimumSize = new Size(0, 50);
             tbPassword.Name = "tbPassword";
-            tbPassword.Size = new Size(238, 27);
+            tbPassword.Size = new Size(600, 50);
             tbPassword.TabIndex = 3;
             tbPassword.UseSystemPasswordChar = true;
             // 
             // btnSignUp
             // 
-            btnSignUp.Location = new Point(333, 305);
-            btnSignUp.Margin = new Padding(3, 4, 3, 4);
+            btnSignUp.BackColor = Color.Transparent;
+            btnSignUp.FlatAppearance.BorderSize = 0;
+            btnSignUp.FlatStyle = FlatStyle.Flat;
+            btnSignUp.Font = new Font("Plus Jakarta Sans", 22.7999973F, FontStyle.Bold);
+            btnSignUp.Location = new Point(880, 700);
+            btnSignUp.Margin = new Padding(0);
             btnSignUp.Name = "btnSignUp";
-            btnSignUp.Size = new Size(238, 29);
+            btnSignUp.Size = new Size(183, 69);
             btnSignUp.TabIndex = 4;
             btnSignUp.Text = "Sign Up";
-            btnSignUp.UseVisualStyleBackColor = true;
+            btnSignUp.UseVisualStyleBackColor = false;
             btnSignUp.Click += btnSignUp_Click;
             // 
-            // lblPassword
+            // txtPassword
             // 
-            lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(333, 230);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(70, 20);
-            lblPassword.TabIndex = 5;
-            lblPassword.Text = "Password";
+            txtPassword.AutoSize = true;
+            txtPassword.BackColor = Color.Transparent;
+            txtPassword.Font = new Font("Plus Jakarta Sans Medium", 16F, FontStyle.Bold);
+            txtPassword.Location = new Point(640, 524);
+            txtPassword.Margin = new Padding(0);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(147, 45);
+            txtPassword.TabIndex = 5;
+            txtPassword.Text = "Password";
             // 
-            // label1
+            // txtAlready
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(333, 349);
-            label1.Name = "label1";
-            label1.Size = new Size(178, 20);
-            label1.TabIndex = 6;
-            label1.Text = "Already have an account?";
+            txtAlready.AutoSize = true;
+            txtAlready.BackColor = Color.Transparent;
+            txtAlready.Font = new Font("Plus Jakarta Sans Medium", 16.8F, FontStyle.Bold);
+            txtAlready.Location = new Point(713, 787);
+            txtAlready.Margin = new Padding(0);
+            txtAlready.Name = "txtAlready";
+            txtAlready.Size = new Size(360, 46);
+            txtAlready.TabIndex = 6;
+            txtAlready.Text = "Already have an account?";
             // 
             // linkLogin
             // 
             linkLogin.AutoSize = true;
-            linkLogin.Location = new Point(525, 349);
+            linkLogin.BackColor = Color.Transparent;
+            linkLogin.Font = new Font("Plus Jakarta Sans ExtraBold", 16.8000011F, FontStyle.Bold);
+            linkLogin.Location = new Point(1059, 787);
+            linkLogin.Margin = new Padding(0);
             linkLogin.Name = "linkLogin";
-            linkLogin.Size = new Size(46, 20);
+            linkLogin.Size = new Size(99, 48);
             linkLogin.TabIndex = 5;
             linkLogin.TabStop = true;
             linkLogin.Text = "Login";
             linkLogin.LinkClicked += linkLogin_LinkClicked;
             // 
-            // lblUsername
+            // txtUsername
             // 
-            lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(333, 167);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(75, 20);
-            lblUsername.TabIndex = 9;
-            lblUsername.Text = "Username";
+            txtUsername.AutoSize = true;
+            txtUsername.BackColor = Color.Transparent;
+            txtUsername.FlatStyle = FlatStyle.Flat;
+            txtUsername.Font = new Font("Plus Jakarta Sans Medium", 16F, FontStyle.Bold);
+            txtUsername.ForeColor = SystemColors.ControlText;
+            txtUsername.Location = new Point(640, 364);
+            txtUsername.Margin = new Padding(0);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(153, 45);
+            txtUsername.TabIndex = 9;
+            txtUsername.Text = "Username";
             // 
             // tbUsername
             // 
-            tbUsername.Location = new Point(333, 191);
-            tbUsername.Margin = new Padding(3, 4, 3, 4);
+            tbUsername.BorderStyle = BorderStyle.None;
+            tbUsername.Cursor = Cursors.IBeam;
+            tbUsername.Font = new Font("Plus Jakarta Sans SemiBold", 16.8000011F, FontStyle.Bold);
+            tbUsername.Location = new Point(655, 430);
+            tbUsername.Margin = new Padding(0);
+            tbUsername.MaximumSize = new Size(700, 0);
+            tbUsername.MinimumSize = new Size(0, 50);
             tbUsername.Name = "tbUsername";
-            tbUsername.Size = new Size(238, 27);
+            tbUsername.Size = new Size(600, 50);
             tbUsername.TabIndex = 2;
             // 
             // SignUp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.Artboard_155;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(874, 556);
-            Controls.Add(lblUsername);
+            Controls.Add(txtUsername);
             Controls.Add(tbUsername);
             Controls.Add(linkLogin);
-            Controls.Add(label1);
-            Controls.Add(lblPassword);
+            Controls.Add(txtAlready);
+            Controls.Add(txtPassword);
             Controls.Add(btnSignUp);
             Controls.Add(tbPassword);
-            Controls.Add(title);
+            Controls.Add(txtSignUp);
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "SignUp";
             Text = "Form1";
+            WindowState = FormWindowState.Maximized;
+            Load += SignUp_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -144,5 +180,10 @@
         private LinkLabel linkLogin;
         private Label lblUsername;
         private TextBox tbUsername;
+        private Label txtUsername;
+        private Label txtPassword;
+        private Label txtAlready;
+        private Label txtSignUp;
+        private Button BtnSignUp;
     }
 }
