@@ -23,15 +23,8 @@ namespace IkanLogger
 
             btnSignUp.BackColor = ColorTranslator.FromHtml("#D8F4FB");
             btnSignUp.ForeColor = ColorTranslator.FromHtml("#EBFFFF");
-            btnSignUp.FlatStyle = FlatStyle.Flat;
-            btnSignUp.FlatAppearance.BorderSize = 0;
 
-            // Hubungkan event handler
-            btnSignUp.MouseEnter += BtnSignUp_MouseEnter;
-            btnSignUp.MouseLeave += BtnSignUp_MouseLeave;
-            btnSignUp.Paint += BtnSignUp_Paint;
-            tbUsername.TextChanged += TbUsername_TextChanged;
-            tbPassword.TextChanged += TbPassword_TextChanged;
+            txtUsername.Font = FontManager.GetByFamilyName("Plus Jakarta Sans", 16, FontStyle.Bold);
         }
 
         private void TbUsername_TextChanged(object sender, EventArgs e)
