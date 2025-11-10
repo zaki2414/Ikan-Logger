@@ -15,28 +15,19 @@ namespace IkanLogger
             InitializeComponent();
         }
 
-private void Login_Load(object sender, EventArgs e)
-    {
-        txtLogin.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
-        txtUserName.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
-        txtPassword.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
-        linkSignUp.LinkColor = ColorTranslator.FromHtml("#1F4F6E");
-        linkSignUp.ActiveLinkColor = ColorTranslator.FromHtml("#8BD8F0");
+        private void Login_Load(object sender, EventArgs e)
+        {
+            txtLogin.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+            txtUserName.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+            txtPassword.ForeColor = ColorTranslator.FromHtml("#1F4F6E");
+            linkSignUp.LinkColor = ColorTranslator.FromHtml("#1F4F6E");
+            linkSignUp.ActiveLinkColor = ColorTranslator.FromHtml("#8BD8F0");
 
-        tbUsername.BackColor = ColorTranslator.FromHtml("#D8F4FB");
-        tbPassword.BackColor = ColorTranslator.FromHtml("#D8F4FB");
+            tbUsername.BackColor = ColorTranslator.FromHtml("#D8F4FB");
+            tbPassword.BackColor = ColorTranslator.FromHtml("#D8F4FB");
 
-        btnLogin.BackColor = ColorTranslator.FromHtml("#D8F4FB");
-        btnLogin.ForeColor = ColorTranslator.FromHtml("#EBFFFF");
-        btnLogin.FlatStyle = FlatStyle.Flat;
-        btnLogin.FlatAppearance.BorderSize = 0;
-
-        // Hubungkan event handler
-        btnLogin.MouseEnter += BtnLogin_MouseEnter;
-        btnLogin.MouseLeave += BtnLogin_MouseLeave;
-        btnLogin.Paint += BtnLogin_Paint;
-        tbUsername.TextChanged += TbUsername_TextChanged;
-        tbPassword.TextChanged += TbPassword_TextChanged;
+            btnLogin.BackColor = ColorTranslator.FromHtml("#D8F4FB");
+            btnLogin.ForeColor = ColorTranslator.FromHtml("#EBFFFF");
         }
         private void TbUsername_TextChanged(object sender, EventArgs e)
         {
@@ -87,17 +78,17 @@ private void Login_Load(object sender, EventArgs e)
         }
 
         private void BtnLogin_MouseEnter(object sender, EventArgs e)
-    {
+        {
             btnLogin.ForeColor = ColorTranslator.FromHtml("#8BD8F0");
             btnLogin.Cursor = Cursors.Hand;
-    }
+        }
 
-    private void BtnLogin_MouseLeave(object sender, EventArgs e)
-    {
+        private void BtnLogin_MouseLeave(object sender, EventArgs e)
+        {
             btnLogin.ForeColor = ColorTranslator.FromHtml("#D8F4FB");
             btnLogin.Cursor = Cursors.Default;
-    }
-    private async void btnLogin_Click(object sender, EventArgs e)
+        }
+        private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
             {
