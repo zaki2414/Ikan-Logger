@@ -11,8 +11,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Font\MAUIKEA_Demo.otf" />
+    <None Remove="Resources\Font\PlusJakartaSans-Italic-VariableFont_wght.ttf" />
+    <None Remove="Resources\Font\PlusJakartaSans-VariableFont_wght.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GMap.NET.WinForms" Version="2.1.7" />
     <PackageReference Include="Npgsql" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Font\MAUIKEA_Demo.otf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Font\PlusJakartaSans-Italic-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Font\PlusJakartaSans-VariableFont_wght.ttf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
